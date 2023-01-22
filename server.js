@@ -11,8 +11,10 @@ app.use(express.static(publicPath));
 
 app.use('/api/v1', rootRouter);
 
-app.listen(7000, async () => {
-    console.log('Server listening on http://localhost:3000');
+
+const port = process.env.PORT || 3000;
+app.listen(port, async () => {
+    console.log(`Server listening on http://localhost:${port}`);
     try {
         await sequelize.authenticate();
         console.log('Database connected successfully');
